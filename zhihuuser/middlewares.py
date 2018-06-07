@@ -6,7 +6,7 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
-
+import logging
 
 class ZhihuuserSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -101,3 +101,11 @@ class ZhihuuserDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+class ZhihuuserProxyMiddleware(object):
+
+    logger = logging.getLogger(__name__)
+
+    def process_request(self, request, spider):
+        self.logger.debug('Using Proxy------------------------')
+        request.meta['proxy'] = '92.222.150.204:2028'
