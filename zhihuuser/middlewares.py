@@ -108,4 +108,4 @@ class ZhihuuserProxyMiddleware(object):
 
     def process_request(self, request, spider):
         self.logger.debug('Using Proxy------------------------')
-        request.meta['proxy'] = '92.222.150.204:2028'
+        request.meta['proxy'] = '206.189.80.99:3128'

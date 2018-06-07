@@ -69,6 +69,7 @@ DOWNLOADER_MIDDLEWARES = {
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'zhihuuser.pipelines.MongoPipeline': 300,
+   'scrapy_redis.pipelines.RedisPipeline': 301      # 爬取结果通过scrapy-redis存储到redis
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -93,3 +94,11 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 MONGO_URI = '192.168.1.110'
 MONGO_DATABASE = 'zhihu'
+
+# 替换scrapy核心调度器，用scrapy-redis的调度器
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+# 替换过滤规则为scrapy-redis的过滤规则
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+
+# 每个scrapy共享爬取队列
+REDIS_URL = 'redis://root:redis-pass@192.168.1.110:6379'
