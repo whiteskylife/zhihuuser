@@ -69,7 +69,7 @@ DOWNLOADER_MIDDLEWARES = {
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'zhihuuser.pipelines.MongoPipeline': 300,
-   'scrapy_redis.pipelines.RedisPipeline': 301      # 爬取结果通过scrapy-redis存储到redis
+   # 'scrapy_redis.pipelines.RedisPipeline': 301      # 爬取结果通过scrapy-redis存储到redis
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
